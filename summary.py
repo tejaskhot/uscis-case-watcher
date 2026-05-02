@@ -162,10 +162,13 @@ def print_summary(changed_nicknames: set[str] | None = None) -> None:
     receipts = load_all_receipts()
     grouped = group_by_form_type(receipts)
 
-    # Fixed ordering
-    form_order = ["I-485"]
+    form_order = [
+        "I-130", "I-130A", "I-131", "I-140", "I-212",
+        "I-360", "I-485", "I-526", "I-539", "I-601",
+        "I-601A", "I-751", "I-765", "I-821", "I-821D",
+        "I-90", "I-929", "N-400", "N-600", "N-600K",
+    ]
     form_types = [f for f in form_order if f in grouped]
-    # Add any other form types not in the predefined order
     form_types.extend(f for f in sorted(grouped.keys()) if f not in form_order)
 
     for form_type in form_types:
